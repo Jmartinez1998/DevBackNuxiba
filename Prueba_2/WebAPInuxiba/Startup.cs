@@ -21,8 +21,9 @@ namespace Prueba_2.WebAPInuxiba;
             });
 
             // Configuracion base de datos
-            services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMySQL(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+            new MySqlServerVersion(new Version(8, 0, 11)))
+            );
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
